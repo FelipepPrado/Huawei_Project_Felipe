@@ -1,4 +1,3 @@
-import time
 import flet as ft
 
 #Forma de criar um botão personalizado, vou precisar pra um botão do login, então é bom
@@ -11,7 +10,8 @@ class MyButton(ft.ElevatedButton):
                             ft.Icon(name=ft.icons.LOGOUT, color=ft.Colors.BLACK),
                             ft.Text("Entrar")
                         ],
-                        width=285,
+                        width=330,
+                        height=28,
                         alignment=ft.MainAxisAlignment.CENTER
                     )
 
@@ -20,13 +20,29 @@ def main(page: ft.Page):
     page.title = "Planting The Future"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
+    image1 = ft.Image(
+        src="C:/Users/Felipe/Downloads/Floresta Urbana 1 (1).png",
+        width=100,
+        height=100,
+        fit=ft.ImageFit.CONTAIN,
+    )
+
+    image2 = ft.Image(
+        src="C:/Users/Felipe/Downloads/image 1.png",
+        width=430,
+        height=320,
+        fit=ft.ImageFit.CONTAIN,
+    )
+
     email_user = ft.TextField(
         hint_text= "Email",
         width=360,
         height=48,
         bgcolor = ft.colors.WHITE,
+        color = "#000000",
+        border_color = Brown,
         border_radius=8,
-        border_width=0,
+        border_width=2,
         hint_style=ft.TextStyle(color="#000000")
         )
     
@@ -37,8 +53,10 @@ def main(page: ft.Page):
         width=360,
         height=48,
         bgcolor = ft.colors.WHITE,
+        color = "#000000",
+        border_color = Brown,
         border_radius=8,
-        border_width=0,
+        border_width=2,
         hint_style=ft.TextStyle(color="#000000")
         )
 
@@ -46,31 +64,32 @@ def main(page: ft.Page):
     
     page.add(
         ft.Card(
+            width=430,
+            height=720,
+            color = ft.colors.BROWN,
             content = ft.Container(
                 ft.Card(
+                    width=430,
+                    height=400,
+                    color = ft.colors.WHITE,
                     content = ft.Container(
                         content=ft.Column( 
                             [
-                                ft.Text("Planting the Future", size=32, color = Brown),
-                                ft.Container(email_user, border=ft.border.all(color=Brown, width=2), border_radius=10),
-                                ft.Container(senha_user, border=ft.border.all(color=Brown, width=2), border_radius=10),
-                                ft.Text("Esqueceu sua senha", size=16, color = "#000000"),
+                                image1,
+                                ft.Text("Planting the Future", size=32, color = Brown, weight=ft.FontWeight.BOLD),
+                                email_user,
+                                senha_user,
+                                ft.TextButton(text = "Esqueceu sua senha", style = ft.ButtonStyle(color = "#000000")),
                                 ft.Container(MyButton(), border=ft.border.all(color="#000000", width=2), border_radius=40)
+                                    
                             ],
                             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                             alignment=ft.MainAxisAlignment.CENTER
                         )
-                    ),
-                    width=430,
-                    height=320,
-                    color = ft.colors.WHITE
+                    )
                 ),
                 alignment=ft.alignment.bottom_center
-            ),
-            width=430,
-            height=720,
-            color = ft.colors.BROWN
-            
+            )
         )
     )
 

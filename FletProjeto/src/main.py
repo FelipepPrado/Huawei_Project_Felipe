@@ -63,23 +63,26 @@ def main(page: ft.Page):
     page.horizontal_alignment=ft.CrossAxisAlignment.CENTER
     
     page.add(
-        ft.Card(
+        ft.Container(
             width=430,
             height=720,
-            color = ft.colors.BROWN,
-            content = ft.Container(
-                ft.Card(
-                    width=430,
-                    height=400,
-                    color = ft.colors.WHITE,
-                    content = ft.Container(
-                        content=ft.Column( 
+            bgcolor = ft.colors.BROWN,
+            border_radius=15,
+            content=ft.Column(
+                [
+                    image2,
+                    ft.Container(
+                        width=430,
+                        height=400,
+                        bgcolor = ft.colors.WHITE,
+                        border_radius=15,
+                        content=ft.Column(
                             [
                                 image1,
                                 ft.Text("Planting the Future", size=32, color = Brown, weight=ft.FontWeight.BOLD),
                                 email_user,
                                 senha_user,
-                                ft.TextButton(text = "Esqueceu sua senha", style = ft.ButtonStyle(color = "#000000")),
+                                ft.TextButton(text = "Esqueceu sua senha?", style = ft.ButtonStyle(color = "#000000")),
                                 ft.Container(MyButton(), border=ft.border.all(color="#000000", width=2), border_radius=40)
                                     
                             ],
@@ -87,7 +90,7 @@ def main(page: ft.Page):
                             alignment=ft.MainAxisAlignment.CENTER
                         )
                     )
-                ),
+                ],
                 alignment=ft.alignment.bottom_center
             )
         )

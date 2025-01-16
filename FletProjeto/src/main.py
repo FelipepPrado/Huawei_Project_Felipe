@@ -6,11 +6,12 @@ class MyButton(ft.ElevatedButton):
         super().__init__()
         self.bgcolor = ft.Colors.GREEN
         self.color = ft.Colors.BLACK
+        self.style = ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=7))
         self.content=ft.Row([
                             ft.Icon(name=ft.icons.LOGOUT, color=ft.Colors.BLACK),
                             ft.Text("Entrar")
                         ],
-                        width=330,
+                        width=300,
                         height=28,
                         alignment=ft.MainAxisAlignment.CENTER
                     )
@@ -22,78 +23,81 @@ def main(page: ft.Page):
 
     image1 = ft.Image(
         src="C:/Users/Felipe/Downloads/Floresta Urbana 1 (1).png",
-        width=100,
-        height=100,
-        fit=ft.ImageFit.CONTAIN,
+        width=90,
+        height=90,
+        fit=ft.ImageFit.COVER,
     )
 
     image2 = ft.Image(
         src="C:/Users/Felipe/Downloads/image 1.png",
         width=430,
-        height=320,
-        fit=ft.ImageFit.CONTAIN,
+        height=410,
+        #border_radius= ft.border_radius.only(top_left, top_right),
+        fit=ft.ImageFit.COVER,
     )
 
     email_user = ft.TextField(
         hint_text= "Email",
-        width=360,
-        height=48,
+        width=320,
+        height=38,
         bgcolor = ft.colors.WHITE,
         color = "#000000",
         border_color = Brown,
         border_radius=8,
         border_width=2,
-        hint_style=ft.TextStyle(color="#000000")
+        hint_style=ft.TextStyle(color="#000000", size=14)
         )
     
     senha_user = ft.TextField(
         hint_text="Senha", 
         password=True,
         can_reveal_password=True,
-        width=360,
-        height=48,
+        width=320,
+        height=38,
         bgcolor = ft.colors.WHITE,
         color = "#000000",
         border_color = Brown,
         border_radius=8,
         border_width=2,
-        hint_style=ft.TextStyle(color="#000000")
+        hint_style=ft.TextStyle(color="#000000", size=14)
         )
 
     page.horizontal_alignment=ft.CrossAxisAlignment.CENTER
-    
+    page.vertical_alignment=ft.MainAxisAlignment.END
+
     page.add(
-        ft.Container(
-            width=430,
-            height=720,
-            bgcolor = ft.colors.BROWN,
-            border_radius=15,
-            content=ft.Column(
-                [
-                    image2,
-                    ft.Container(
-                        width=430,
-                        height=400,
-                        bgcolor = ft.colors.WHITE,
-                        border_radius=15,
-                        content=ft.Column(
-                            [
-                                image1,
-                                ft.Text("Planting the Future", size=32, color = Brown, weight=ft.FontWeight.BOLD),
-                                email_user,
-                                senha_user,
-                                ft.TextButton(text = "Esqueceu sua senha?", style = ft.ButtonStyle(color = "#000000")),
-                                ft.Container(MyButton(), border=ft.border.all(color="#000000", width=2), border_radius=40)
-                                    
-                            ],
-                            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                            alignment=ft.MainAxisAlignment.CENTER
-                        )
+        ft.Column(
+            [
+                image2,
+                ft.Container(
+                    width=430,
+                    height=360,
+                    bgcolor = "#E7E1E1",
+                    border_radius=15,
+                    content=ft.Column(
+                        [
+                            ft.Column(
+                                [
+                                    image1,
+                                    ft.Text("Planting the Future", size=28, color = Brown, weight=ft.FontWeight.BOLD)
+                                ],
+                                spacing=0,
+                                horizontal_alignment=ft.CrossAxisAlignment.CENTER
+                            ),
+                            email_user,
+                            senha_user,
+                            ft.TextButton(text = "Esqueceu sua senha?", style = ft.ButtonStyle(color = "#000000")),
+                            ft.Container(MyButton(), border=ft.border.all(color="#000000", width=2), border_radius=8)
+                                
+                        ],
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        #alignment=ft.MainAxisAlignment.END
                     )
-                ],
-                alignment=ft.alignment.bottom_center
-            )
-        )
+                )
+            ],
+            spacing=0
+        ),
+    
     )
 
 

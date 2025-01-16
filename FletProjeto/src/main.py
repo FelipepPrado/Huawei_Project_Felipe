@@ -25,7 +25,7 @@ def main(page: ft.Page):
 
     email_user = ft.TextField(
         hint_text= "Email",
-        width=320,
+        width=360,
         height=38,
         bgcolor = ft.colors.WHITE,
         color = "#000000",
@@ -39,7 +39,7 @@ def main(page: ft.Page):
         hint_text="Senha", 
         password=True,
         can_reveal_password=True,
-        width=320,
+        width=360,
         height=38,
         bgcolor = ft.colors.WHITE,
         color = "#000000",
@@ -51,6 +51,8 @@ def main(page: ft.Page):
 
     page.horizontal_alignment=ft.CrossAxisAlignment.CENTER
     page.vertical_alignment=ft.MainAxisAlignment.END
+
+    page.padding=0
 
     page.add(
         ft.Column(
@@ -76,14 +78,14 @@ def main(page: ft.Page):
                             ft.TextButton(text = "Esqueceu sua senha?", style = ft.ButtonStyle(color = "#000000")),
                             ft.Container(
                                         ft.ElevatedButton(
-                                           bgcolor = ft.Colors.GREEN,
+                                           bgcolor = "#50EA3B",
                                            color = ft.Colors.BLACK,
-                                           style = ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=7)),
+                                           style = ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=7), text_style=ft.TextStyle(size=18)),
                                            content=ft.Row([
                                                     ft.Icon(name=ft.icons.LOGOUT, color=ft.Colors.BLACK),
                                                     ft.Text("Entrar")
                                                 ],
-                                                width=300,
+                                                width=340,
                                                 height=28,
                                                 alignment=ft.MainAxisAlignment.CENTER
                                             )
